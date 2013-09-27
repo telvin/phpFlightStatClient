@@ -41,7 +41,7 @@ class FlightStatHelper
         Yii::import('application.vendors.flightStatAPI.schedulesAPI.ScheduledFlightsV1SoapService');
         Yii::import('application.vendors.flightStatAPI.weatherAPI.WeatherV1SoapService');
 
-        Yii::import('application.vendors.RestCurl.RESTClient');
+        Yii::import('application.vendors.flightStatAPI.RestCurl.RESTClient');
 
     }
 
