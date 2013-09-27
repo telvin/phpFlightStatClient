@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://v1.service.schedules.flightstats.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://v1.service.schedules.flightstats.com/" name="ScheduledFlightsV1SoapService">
+<types>
+<xsd:schema>
+<xsd:import namespace="http://v1.service.schedules.flightstats.com/" schemaLocation="E:/wamp/www/flightStatApiPhpClass/schedulesAPI/scheduledFlightsService.xsd" />
+</xsd:schema>
+</types>
+<message name="byRoute_Arriving">
+<part name="parameters" element="tns:byRoute_Arriving" />
+</message>
+<message name="byRoute_ArrivingResponse">
+<part name="parameters" element="tns:byRoute_ArrivingResponse" />
+</message>
+<message name="APIException">
+<part name="fault" element="tns:APIException" />
+</message>
+<message name="byAirport_Departing">
+<part name="parameters" element="tns:byAirport_Departing" />
+</message>
+<message name="byAirport_DepartingResponse">
+<part name="parameters" element="tns:byAirport_DepartingResponse" />
+</message>
+<message name="byRoute_Departing">
+<part name="parameters" element="tns:byRoute_Departing" />
+</message>
+<message name="byRoute_DepartingResponse">
+<part name="parameters" element="tns:byRoute_DepartingResponse" />
+</message>
+<message name="byFlight_Arriving">
+<part name="parameters" element="tns:byFlight_Arriving" />
+</message>
+<message name="byFlight_ArrivingResponse">
+<part name="parameters" element="tns:byFlight_ArrivingResponse" />
+</message>
+<message name="byFlight_Departing">
+<part name="parameters" element="tns:byFlight_Departing" />
+</message>
+<message name="byFlight_DepartingResponse">
+<part name="parameters" element="tns:byFlight_DepartingResponse" />
+</message>
+<message name="byAirport_Arriving">
+<part name="parameters" element="tns:byAirport_Arriving" />
+</message>
+<message name="byAirport_ArrivingResponse">
+<part name="parameters" element="tns:byAirport_ArrivingResponse" />
+</message>
+<portType name="scheduledFlightService">
+<operation name="byRoute_Arriving">
+<input wsam:Action="http://v1.service.schedules.flightstats.com/scheduledFlightService/byRoute_ArrivingRequest" message="tns:byRoute_Arriving" />
+<output wsam:Action="http://v1.service.schedules.flightstats.com/scheduledFlightService/byRoute_ArrivingResponse" message="tns:byRoute_ArrivingResponse" />
+<fault message="tns:APIException" name="APIException" wsam:Action="http://v1.service.schedules.flightstats.com/scheduledFlightService/byRoute_Arriving/Fault/APIException" />
+</operation>
+<operation name="byAirport_Departing">
+<input wsam:Action="http://v1.service.schedules.flightstats.com/scheduledFlightService/byAirport_DepartingRequest" message="tns:byAirport_Departing" />
+<output wsam:Action="http://v1.service.schedules.flightstats.com/scheduledFlightService/byAirport_DepartingResponse" message="tns:byAirport_DepartingResponse" />
+<fault message="tns:APIException" name="APIException" wsam:Action="http://v1.service.schedules.flightstats.com/scheduledFlightService/byAirport_Departing/Fault/APIException" />
+</operation>
+<operation name="byRoute_Departing">
+<input wsam:Action="http://v1.service.schedules.flightstats.com/scheduledFlightService/byRoute_DepartingRequest" message="tns:byRoute_Departing" />
+<output wsam:Action="http://v1.service.schedules.flightstats.com/scheduledFlightService/byRoute_DepartingResponse" message="tns:byRoute_DepartingResponse" />
+<fault message="tns:APIException" name="APIException" wsam:Action="http://v1.service.schedules.flightstats.com/scheduledFlightService/byRoute_Departing/Fault/APIException" />
+</operation>
+<operation name="byFlight_Arriving">
+<input wsam:Action="http://v1.service.schedules.flightstats.com/scheduledFlightService/byFlight_ArrivingRequest" message="tns:byFlight_Arriving" />
+<output wsam:Action="http://v1.service.schedules.flightstats.com/scheduledFlightService/byFlight_ArrivingResponse" message="tns:byFlight_ArrivingResponse" />
+<fault message="tns:APIException" name="APIException" wsam:Action="http://v1.service.schedules.flightstats.com/scheduledFlightService/byFlight_Arriving/Fault/APIException" />
+</operation>
+<operation name="byFlight_Departing">
+<input wsam:Action="http://v1.service.schedules.flightstats.com/scheduledFlightService/byFlight_DepartingRequest" message="tns:byFlight_Departing" />
+<output wsam:Action="http://v1.service.schedules.flightstats.com/scheduledFlightService/byFlight_DepartingResponse" message="tns:byFlight_DepartingResponse" />
+<fault message="tns:APIException" name="APIException" wsam:Action="http://v1.service.schedules.flightstats.com/scheduledFlightService/byFlight_Departing/Fault/APIException" />
+</operation>
+<operation name="byAirport_Arriving">
+<input wsam:Action="http://v1.service.schedules.flightstats.com/scheduledFlightService/byAirport_ArrivingRequest" message="tns:byAirport_Arriving" />
+<output wsam:Action="http://v1.service.schedules.flightstats.com/scheduledFlightService/byAirport_ArrivingResponse" message="tns:byAirport_ArrivingResponse" />
+<fault message="tns:APIException" name="APIException" wsam:Action="http://v1.service.schedules.flightstats.com/scheduledFlightService/byAirport_Arriving/Fault/APIException" />
+</operation>
+</portType>
+<binding name="scheduledFlightServicePortBinding" type="tns:scheduledFlightService">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+<operation name="byRoute_Arriving">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+<fault name="APIException">
+<soap:fault name="APIException" use="literal" />
+</fault>
+</operation>
+<operation name="byAirport_Departing">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+<fault name="APIException">
+<soap:fault name="APIException" use="literal" />
+</fault>
+</operation>
+<operation name="byRoute_Departing">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+<fault name="APIException">
+<soap:fault name="APIException" use="literal" />
+</fault>
+</operation>
+<operation name="byFlight_Arriving">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+<fault name="APIException">
+<soap:fault name="APIException" use="literal" />
+</fault>
+</operation>
+<operation name="byFlight_Departing">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+<fault name="APIException">
+<soap:fault name="APIException" use="literal" />
+</fault>
+</operation>
+<operation name="byAirport_Arriving">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+<fault name="APIException">
+<soap:fault name="APIException" use="literal" />
+</fault>
+</operation>
+</binding>
+<service name="ScheduledFlightsV1SoapService">
+<port name="scheduledFlightServicePort" binding="tns:scheduledFlightServicePortBinding">
+<soap:address location="https://api.flightstats.com:443/flex/schedules/soap/v1/scheduledFlightsService" />
+</port>
+</service>
+</definitions>

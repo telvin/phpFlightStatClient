@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://v1.service.weather.flightstats.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://v1.service.weather.flightstats.com/" name="WeatherV1SoapService">
+<types>
+<xsd:schema>
+<xsd:import namespace="http://v1.service.weather.flightstats.com/" schemaLocation="E:/wamp/www/flightStatApiPhpClass/weatherAPI/weatherService.xsd" />
+</xsd:schema>
+</types>
+<message name="taf_for_airport">
+<part name="parameters" element="tns:taf_for_airport" />
+</message>
+<message name="taf_for_airportResponse">
+<part name="parameters" element="tns:taf_for_airportResponse" />
+</message>
+<message name="APIException">
+<part name="fault" element="tns:APIException" />
+</message>
+<message name="zoneForecasts">
+<part name="parameters" element="tns:zoneForecasts" />
+</message>
+<message name="zoneForecastsResponse">
+<part name="parameters" element="tns:zoneForecastsResponse" />
+</message>
+<message name="metar_for_airport">
+<part name="parameters" element="tns:metar_for_airport" />
+</message>
+<message name="metar_for_airportResponse">
+<part name="parameters" element="tns:metar_for_airportResponse" />
+</message>
+<message name="all">
+<part name="parameters" element="tns:all" />
+</message>
+<message name="allResponse">
+<part name="parameters" element="tns:allResponse" />
+</message>
+<portType name="weatherService">
+<operation name="taf_for_airport">
+<input wsam:Action="http://v1.service.weather.flightstats.com/weatherService/taf_for_airportRequest" message="tns:taf_for_airport" />
+<output wsam:Action="http://v1.service.weather.flightstats.com/weatherService/taf_for_airportResponse" message="tns:taf_for_airportResponse" />
+<fault message="tns:APIException" name="APIException" wsam:Action="http://v1.service.weather.flightstats.com/weatherService/taf_for_airport/Fault/APIException" />
+</operation>
+<operation name="zoneForecasts">
+<input wsam:Action="http://v1.service.weather.flightstats.com/weatherService/zoneForecastsRequest" message="tns:zoneForecasts" />
+<output wsam:Action="http://v1.service.weather.flightstats.com/weatherService/zoneForecastsResponse" message="tns:zoneForecastsResponse" />
+<fault message="tns:APIException" name="APIException" wsam:Action="http://v1.service.weather.flightstats.com/weatherService/zoneForecasts/Fault/APIException" />
+</operation>
+<operation name="metar_for_airport">
+<input wsam:Action="http://v1.service.weather.flightstats.com/weatherService/metar_for_airportRequest" message="tns:metar_for_airport" />
+<output wsam:Action="http://v1.service.weather.flightstats.com/weatherService/metar_for_airportResponse" message="tns:metar_for_airportResponse" />
+<fault message="tns:APIException" name="APIException" wsam:Action="http://v1.service.weather.flightstats.com/weatherService/metar_for_airport/Fault/APIException" />
+</operation>
+<operation name="all">
+<input wsam:Action="http://v1.service.weather.flightstats.com/weatherService/allRequest" message="tns:all" />
+<output wsam:Action="http://v1.service.weather.flightstats.com/weatherService/allResponse" message="tns:allResponse" />
+<fault message="tns:APIException" name="APIException" wsam:Action="http://v1.service.weather.flightstats.com/weatherService/all/Fault/APIException" />
+</operation>
+</portType>
+<binding name="weatherServicePortBinding" type="tns:weatherService">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+<operation name="taf_for_airport">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+<fault name="APIException">
+<soap:fault name="APIException" use="literal" />
+</fault>
+</operation>
+<operation name="zoneForecasts">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+<fault name="APIException">
+<soap:fault name="APIException" use="literal" />
+</fault>
+</operation>
+<operation name="metar_for_airport">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+<fault name="APIException">
+<soap:fault name="APIException" use="literal" />
+</fault>
+</operation>
+<operation name="all">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+<fault name="APIException">
+<soap:fault name="APIException" use="literal" />
+</fault>
+</operation>
+</binding>
+<service name="WeatherV1SoapService">
+<port name="weatherServicePort" binding="tns:weatherServicePortBinding">
+<soap:address location="https://api.flightstats.com:443/flex/weather/soap/v1/weatherService" />
+</port>
+</service>
+</definitions>

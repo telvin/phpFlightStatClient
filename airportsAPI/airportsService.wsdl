@@ -1,0 +1,320 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://v1.airports.cache.conducivetech.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://v1.airports.cache.conducivetech.com/" name="AirportsV1SoapService">
+<types>
+<xsd:schema>
+<xsd:import namespace="http://v1.airports.cache.conducivetech.com/" schemaLocation="E:/wamp/www/flightStatApiPhpClass/airportsAPI/airportsService.xsd" />
+</xsd:schema>
+</types>
+<message name="airportsByIata">
+<part name="parameters" element="tns:airportsByIata" />
+</message>
+<message name="airportsByIataResponse">
+<part name="parameters" element="tns:airportsByIataResponse" />
+</message>
+<message name="APIException">
+<part name="fault" element="tns:APIException" />
+</message>
+<message name="airportsByIcao">
+<part name="parameters" element="tns:airportsByIcao" />
+</message>
+<message name="airportsByIcaoResponse">
+<part name="parameters" element="tns:airportsByIcaoResponse" />
+</message>
+<message name="anyCode_currentAirport">
+<part name="parameters" element="tns:anyCode_currentAirport" />
+</message>
+<message name="anyCode_currentAirportResponse">
+<part name="parameters" element="tns:anyCode_currentAirportResponse" />
+</message>
+<message name="allAirports">
+<part name="parameters" element="tns:allAirports" />
+</message>
+<message name="allAirportsResponse">
+<part name="parameters" element="tns:allAirportsResponse" />
+</message>
+<message name="airportByFsCode">
+<part name="parameters" element="tns:airportByFsCode" />
+</message>
+<message name="airportByFsCodeResponse">
+<part name="parameters" element="tns:airportByFsCodeResponse" />
+</message>
+<message name="airportByIata">
+<part name="parameters" element="tns:airportByIata" />
+</message>
+<message name="airportByIataResponse">
+<part name="parameters" element="tns:airportByIataResponse" />
+</message>
+<message name="anyCode_airportForDay">
+<part name="parameters" element="tns:anyCode_airportForDay" />
+</message>
+<message name="anyCode_airportForDayResponse">
+<part name="parameters" element="tns:anyCode_airportForDayResponse" />
+</message>
+<message name="cityCode_airports">
+<part name="parameters" element="tns:cityCode_airports" />
+</message>
+<message name="cityCode_airportsResponse">
+<part name="parameters" element="tns:cityCode_airportsResponse" />
+</message>
+<message name="countryCode_airports">
+<part name="parameters" element="tns:countryCode_airports" />
+</message>
+<message name="countryCode_airportsResponse">
+<part name="parameters" element="tns:countryCode_airportsResponse" />
+</message>
+<message name="radius_airports">
+<part name="parameters" element="tns:radius_airports" />
+</message>
+<message name="radius_airportsResponse">
+<part name="parameters" element="tns:radius_airportsResponse" />
+</message>
+<message name="currentAirports">
+<part name="parameters" element="tns:currentAirports" />
+</message>
+<message name="currentAirportsResponse">
+<part name="parameters" element="tns:currentAirportsResponse" />
+</message>
+<message name="airportByIcao">
+<part name="parameters" element="tns:airportByIcao" />
+</message>
+<message name="airportByIcaoResponse">
+<part name="parameters" element="tns:airportByIcaoResponse" />
+</message>
+<message name="airports">
+<part name="parameters" element="tns:airports" />
+</message>
+<message name="airportsResponse">
+<part name="parameters" element="tns:airportsResponse" />
+</message>
+<portType name="airportsService">
+<operation name="airportsByIata">
+<input wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/airportsByIataRequest" message="tns:airportsByIata" />
+<output wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/airportsByIataResponse" message="tns:airportsByIataResponse" />
+<fault message="tns:APIException" name="APIException" wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/airportsByIata/Fault/APIException" />
+</operation>
+<operation name="airportsByIcao">
+<input wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/airportsByIcaoRequest" message="tns:airportsByIcao" />
+<output wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/airportsByIcaoResponse" message="tns:airportsByIcaoResponse" />
+<fault message="tns:APIException" name="APIException" wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/airportsByIcao/Fault/APIException" />
+</operation>
+<operation name="anyCode_currentAirport">
+<input wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/anyCode_currentAirportRequest" message="tns:anyCode_currentAirport" />
+<output wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/anyCode_currentAirportResponse" message="tns:anyCode_currentAirportResponse" />
+<fault message="tns:APIException" name="APIException" wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/anyCode_currentAirport/Fault/APIException" />
+</operation>
+<operation name="allAirports">
+<input wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/allAirportsRequest" message="tns:allAirports" />
+<output wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/allAirportsResponse" message="tns:allAirportsResponse" />
+<fault message="tns:APIException" name="APIException" wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/allAirports/Fault/APIException" />
+</operation>
+<operation name="airportByFsCode">
+<input wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/airportByFsCodeRequest" message="tns:airportByFsCode" />
+<output wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/airportByFsCodeResponse" message="tns:airportByFsCodeResponse" />
+<fault message="tns:APIException" name="APIException" wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/airportByFsCode/Fault/APIException" />
+</operation>
+<operation name="airportByIata">
+<input wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/airportByIataRequest" message="tns:airportByIata" />
+<output wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/airportByIataResponse" message="tns:airportByIataResponse" />
+<fault message="tns:APIException" name="APIException" wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/airportByIata/Fault/APIException" />
+</operation>
+<operation name="anyCode_airportForDay">
+<input wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/anyCode_airportForDayRequest" message="tns:anyCode_airportForDay" />
+<output wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/anyCode_airportForDayResponse" message="tns:anyCode_airportForDayResponse" />
+<fault message="tns:APIException" name="APIException" wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/anyCode_airportForDay/Fault/APIException" />
+</operation>
+<operation name="cityCode_airports">
+<input wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/cityCode_airportsRequest" message="tns:cityCode_airports" />
+<output wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/cityCode_airportsResponse" message="tns:cityCode_airportsResponse" />
+<fault message="tns:APIException" name="APIException" wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/cityCode_airports/Fault/APIException" />
+</operation>
+<operation name="countryCode_airports">
+<input wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/countryCode_airportsRequest" message="tns:countryCode_airports" />
+<output wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/countryCode_airportsResponse" message="tns:countryCode_airportsResponse" />
+<fault message="tns:APIException" name="APIException" wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/countryCode_airports/Fault/APIException" />
+</operation>
+<operation name="radius_airports">
+<input wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/radius_airportsRequest" message="tns:radius_airports" />
+<output wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/radius_airportsResponse" message="tns:radius_airportsResponse" />
+<fault message="tns:APIException" name="APIException" wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/radius_airports/Fault/APIException" />
+</operation>
+<operation name="currentAirports">
+<input wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/currentAirportsRequest" message="tns:currentAirports" />
+<output wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/currentAirportsResponse" message="tns:currentAirportsResponse" />
+<fault message="tns:APIException" name="APIException" wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/currentAirports/Fault/APIException" />
+</operation>
+<operation name="airportByIcao">
+<input wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/airportByIcaoRequest" message="tns:airportByIcao" />
+<output wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/airportByIcaoResponse" message="tns:airportByIcaoResponse" />
+<fault message="tns:APIException" name="APIException" wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/airportByIcao/Fault/APIException" />
+</operation>
+<operation name="airports">
+<input wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/airportsRequest" message="tns:airports" />
+<output wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/airportsResponse" message="tns:airportsResponse" />
+<fault message="tns:APIException" name="APIException" wsam:Action="http://v1.airports.cache.conducivetech.com/airportsService/airports/Fault/APIException" />
+</operation>
+</portType>
+<binding name="airportsServicePortBinding" type="tns:airportsService">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+<operation name="airportsByIata">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+<fault name="APIException">
+<soap:fault name="APIException" use="literal" />
+</fault>
+</operation>
+<operation name="airportsByIcao">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+<fault name="APIException">
+<soap:fault name="APIException" use="literal" />
+</fault>
+</operation>
+<operation name="anyCode_currentAirport">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+<fault name="APIException">
+<soap:fault name="APIException" use="literal" />
+</fault>
+</operation>
+<operation name="allAirports">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+<fault name="APIException">
+<soap:fault name="APIException" use="literal" />
+</fault>
+</operation>
+<operation name="airportByFsCode">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+<fault name="APIException">
+<soap:fault name="APIException" use="literal" />
+</fault>
+</operation>
+<operation name="airportByIata">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+<fault name="APIException">
+<soap:fault name="APIException" use="literal" />
+</fault>
+</operation>
+<operation name="anyCode_airportForDay">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+<fault name="APIException">
+<soap:fault name="APIException" use="literal" />
+</fault>
+</operation>
+<operation name="cityCode_airports">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+<fault name="APIException">
+<soap:fault name="APIException" use="literal" />
+</fault>
+</operation>
+<operation name="countryCode_airports">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+<fault name="APIException">
+<soap:fault name="APIException" use="literal" />
+</fault>
+</operation>
+<operation name="radius_airports">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+<fault name="APIException">
+<soap:fault name="APIException" use="literal" />
+</fault>
+</operation>
+<operation name="currentAirports">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+<fault name="APIException">
+<soap:fault name="APIException" use="literal" />
+</fault>
+</operation>
+<operation name="airportByIcao">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+<fault name="APIException">
+<soap:fault name="APIException" use="literal" />
+</fault>
+</operation>
+<operation name="airports">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+<fault name="APIException">
+<soap:fault name="APIException" use="literal" />
+</fault>
+</operation>
+</binding>
+<service name="AirportsV1SoapService">
+<port name="airportsServicePort" binding="tns:airportsServicePortBinding">
+<soap:address location="https://api.flightstats.com:443/flex/airports/soap/v1/airportsService" />
+</port>
+</service>
+</definitions>

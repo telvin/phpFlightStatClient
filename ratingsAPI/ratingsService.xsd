@@ -1,0 +1,275 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.1 (branches/2.1-6728; 2011-02-03T14:14:58+0000) JAXWS-RI/2.2.3 JAXWS/2.2. --><xs:schema xmlns:tns="http://v1.service.ratings.cache.conducivetech.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://v1.service.ratings.cache.conducivetech.com/">
+
+<xs:element name="APIException" type="tns:APIException" />
+
+<xs:element name="airline" type="tns:airlineV1" />
+
+<xs:element name="airport" type="tns:airportV1" />
+
+<xs:element name="apiResponseError" type="tns:apiResponseError" />
+
+<xs:element name="appendix" type="tns:appendices" />
+
+<xs:element name="byFlight" type="tns:byFlight" />
+
+<xs:element name="byFlightResponse" type="tns:byFlightResponse" />
+
+<xs:element name="byRoute" type="tns:byRoute" />
+
+<xs:element name="byRouteResponse" type="tns:byRouteResponse" />
+
+<xs:element name="rating" type="tns:ratingV1" />
+
+<xs:element name="request" nillable="true" type="xs:anyType" />
+
+<xs:element name="response" nillable="true" type="xs:anyType" />
+
+<xs:complexType name="byFlight">
+<xs:sequence>
+<xs:element name="appId" type="xs:string" />
+<xs:element name="appKey" type="xs:string" />
+<xs:element name="carrier" type="xs:string" />
+<xs:element name="flightNumber" type="xs:string" />
+<xs:element name="departureAirport" type="xs:string" minOccurs="0" />
+<xs:element name="codeType" type="xs:string" minOccurs="0" />
+<xs:element name="extendedOptions" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="byFlightResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:responseFlight" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="responseFlight">
+<xs:complexContent>
+<xs:extension base="tns:responseBase">
+<xs:sequence>
+<xs:element name="request" type="tns:requestFlight" minOccurs="0" />
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="responseBase">
+<xs:sequence>
+<xs:element name="ratings" minOccurs="0">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="rating" type="tns:ratingV1" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="appendix" type="tns:appendices" minOccurs="0" />
+<xs:element name="error" type="tns:apiResponseError" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="requestFlight">
+<xs:complexContent>
+<xs:extension base="tns:requestBase">
+<xs:sequence>
+<xs:element name="airlineCode" type="tns:requestedAirlineV1" minOccurs="0" />
+<xs:element name="flightNumber" type="tns:requestedFlightNumber" minOccurs="0" />
+<xs:element name="departureAirport" type="tns:requestedAirportV1" minOccurs="0" />
+<xs:element name="codeType" type="tns:requestedString" minOccurs="0" />
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="requestBase">
+<xs:sequence>
+<xs:element name="url" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="requestedAirlineV1">
+<xs:sequence>
+<xs:element name="requestedCode" type="xs:string" minOccurs="0" />
+<xs:element name="fsCode" type="xs:string" minOccurs="0" />
+<xs:element name="airline" type="tns:airlineV1" minOccurs="0" />
+<xs:element name="error" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="airlineV1">
+<xs:sequence>
+<xs:element name="fs" type="xs:string" />
+<xs:element name="iata" type="xs:string" minOccurs="0" />
+<xs:element name="icao" type="xs:string" minOccurs="0" />
+<xs:element name="name" type="xs:string" />
+<xs:element name="phoneNumber" type="xs:string" minOccurs="0" />
+<xs:element name="active" type="xs:boolean" />
+<xs:element name="dateFrom" type="xs:string" minOccurs="0" />
+<xs:element name="dateTo" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="requestedFlightNumber">
+<xs:complexContent>
+<xs:extension base="tns:requestedString">
+<xs:sequence />
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="requestedString">
+<xs:sequence>
+<xs:element name="requested" type="xs:string" minOccurs="0" />
+<xs:element name="interpreted" type="xs:string" minOccurs="0" />
+<xs:element name="error" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="requestedAirportV1">
+<xs:sequence>
+<xs:element name="requestedCode" type="xs:string" minOccurs="0" />
+<xs:element name="fsCode" type="xs:string" minOccurs="0" />
+<xs:element name="airport" type="tns:airportV1" minOccurs="0" />
+<xs:element name="error" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="airportV1">
+<xs:sequence>
+<xs:element name="fs" type="xs:string" />
+<xs:element name="iata" type="xs:string" minOccurs="0" />
+<xs:element name="icao" type="xs:string" minOccurs="0" />
+<xs:element name="faa" type="xs:string" minOccurs="0" />
+<xs:element name="name" type="xs:string" minOccurs="0" />
+<xs:element name="street1" type="xs:string" minOccurs="0" />
+<xs:element name="street2" type="xs:string" minOccurs="0" />
+<xs:element name="city" type="xs:string" />
+<xs:element name="cityCode" type="xs:string" minOccurs="0" />
+<xs:element name="district" type="xs:string" minOccurs="0" />
+<xs:element name="stateCode" type="xs:string" minOccurs="0" />
+<xs:element name="postalCode" type="xs:string" minOccurs="0" />
+<xs:element name="countryCode" type="xs:string" />
+<xs:element name="countryName" type="xs:string" />
+<xs:element name="regionName" type="xs:string" />
+<xs:element name="timeZoneRegionName" type="xs:string" />
+<xs:element name="weatherZone" type="xs:string" minOccurs="0" />
+<xs:element name="localTime" type="xs:string" />
+<xs:element name="utcOffsetHours" type="xs:double" />
+<xs:element name="latitude" type="xs:double" />
+<xs:element name="longitude" type="xs:double" />
+<xs:element name="elevationFeet" type="xs:int" minOccurs="0" />
+<xs:element name="classification" type="xs:int" />
+<xs:element name="active" type="xs:boolean" />
+<xs:element name="dateFrom" type="xs:string" minOccurs="0" />
+<xs:element name="dateTo" type="xs:string" minOccurs="0" />
+<xs:element name="delayIndexUrl" type="xs:string" minOccurs="0" />
+<xs:element name="weatherUrl" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ratingV1">
+<xs:sequence>
+<xs:element name="departureAirport" type="tns:airportV1" minOccurs="0" />
+<xs:element name="departureAirportFsCode" type="xs:string" minOccurs="0" />
+<xs:element name="arrivalAirport" type="tns:airportV1" minOccurs="0" />
+<xs:element name="arrivalAirportFsCode" type="xs:string" minOccurs="0" />
+<xs:element name="airline" type="tns:airlineV1" minOccurs="0" />
+<xs:element name="airlineFsCode" type="xs:string" minOccurs="0" />
+<xs:element name="flightNumber" type="xs:string" minOccurs="0" />
+<xs:element name="codeshares" type="xs:int" />
+<xs:element name="directs" type="xs:int" />
+<xs:element name="observations" type="xs:int" />
+<xs:element name="ontime" type="xs:int" />
+<xs:element name="late15" type="xs:int" />
+<xs:element name="late30" type="xs:int" />
+<xs:element name="late45" type="xs:int" />
+<xs:element name="cancelled" type="xs:int" />
+<xs:element name="diverted" type="xs:int" />
+<xs:element name="ontimePercent" type="xs:double" />
+<xs:element name="delayObservations" type="xs:int" />
+<xs:element name="delayMean" type="xs:double" />
+<xs:element name="delayStandardDeviation" type="xs:double" />
+<xs:element name="delayMin" type="xs:int" />
+<xs:element name="delayMax" type="xs:int" />
+<xs:element name="allOntimeCumulative" type="xs:double" />
+<xs:element name="allOntimeStars" type="xs:double" />
+<xs:element name="allDelayCumulative" type="xs:double" />
+<xs:element name="allDelayStars" type="xs:double" />
+<xs:element name="allStars" type="xs:double" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="appendices">
+<xs:sequence>
+<xs:element name="airlines" minOccurs="0">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="airline" type="tns:airlineV1" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="airports" minOccurs="0">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="airport" type="tns:airportV1" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="apiResponseError">
+<xs:sequence>
+<xs:element name="httpStatusCode" type="xs:int" />
+<xs:element name="errorCode" type="xs:string" minOccurs="0" />
+<xs:element name="errorId" type="xs:string" minOccurs="0" />
+<xs:element name="errorMessage" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="APIException">
+<xs:sequence>
+<xs:element name="httpStatusCode" type="xs:int" />
+<xs:element name="errorCode" type="xs:string" minOccurs="0" />
+<xs:element name="errorId" type="xs:string" minOccurs="0" />
+<xs:element name="errorMessage" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="byRoute">
+<xs:sequence>
+<xs:element name="appId" type="xs:string" />
+<xs:element name="appKey" type="xs:string" />
+<xs:element name="departureAirport" type="xs:string" />
+<xs:element name="arrivalAirport" type="xs:string" />
+<xs:element name="codeType" type="xs:string" minOccurs="0" />
+<xs:element name="extendedOptions" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="byRouteResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:responseRoute" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="responseRoute">
+<xs:complexContent>
+<xs:extension base="tns:responseBase">
+<xs:sequence>
+<xs:element name="request" type="tns:requestRoute" minOccurs="0" />
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="requestRoute">
+<xs:complexContent>
+<xs:extension base="tns:requestBase">
+<xs:sequence>
+<xs:element name="departureAirport" type="tns:requestedAirportV1" minOccurs="0" />
+<xs:element name="arrivalAirport" type="tns:requestedAirportV1" minOccurs="0" />
+<xs:element name="codeType" type="tns:requestedString" minOccurs="0" />
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:schema>

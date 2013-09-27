@@ -1,0 +1,434 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.1 (branches/2.1-6728; 2011-02-03T14:14:58+0000) JAXWS-RI/2.2.3 JAXWS/2.2. --><xs:schema xmlns:tns="http://v1.service.weather.flightstats.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://v1.service.weather.flightstats.com/">
+
+<xs:element name="APIException" type="tns:APIException" />
+
+<xs:element name="airport" type="tns:airportV1" />
+
+<xs:element name="all" type="tns:all" />
+
+<xs:element name="allResponse" type="tns:allResponse" />
+
+<xs:element name="apiResponseError" type="tns:apiResponseError" />
+
+<xs:element name="appendix" type="tns:appendices" />
+
+<xs:element name="metar" type="tns:metarV1" />
+
+<xs:element name="metar_for_airport" type="tns:metar_for_airport" />
+
+<xs:element name="metar_for_airportResponse" type="tns:metar_for_airportResponse" />
+
+<xs:element name="request" type="tns:weatherRequestBaseV1" />
+
+<xs:element name="response" nillable="true" type="xs:anyType" />
+
+<xs:element name="taf" type="tns:tafV1" />
+
+<xs:element name="taf_for_airport" type="tns:taf_for_airport" />
+
+<xs:element name="taf_for_airportResponse" type="tns:taf_for_airportResponse" />
+
+<xs:element name="zoneForecast" type="tns:zoneForecastV1" />
+
+<xs:element name="zoneForecasts" type="tns:zoneForecasts" />
+
+<xs:element name="zoneForecastsResponse" type="tns:zoneForecastsResponse" />
+
+<xs:complexType name="taf_for_airport">
+<xs:sequence>
+<xs:element name="appId" type="xs:string" />
+<xs:element name="appKey" type="xs:string" />
+<xs:element name="airport" type="xs:string" />
+<xs:element name="codeType" type="xs:string" minOccurs="0" />
+<xs:element name="extendedOptions" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="taf_for_airportResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:tafResponseV1" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="tafResponseV1">
+<xs:complexContent>
+<xs:extension base="tns:responseImpl">
+<xs:sequence>
+<xs:element name="request" type="tns:weatherRequestBaseV1" minOccurs="0" />
+<xs:element name="taf" type="tns:tafV1" minOccurs="0" />
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="responseImpl" abstract="true">
+<xs:sequence>
+<xs:element name="error" type="tns:apiResponseError" minOccurs="0" />
+<xs:element name="appendix" type="tns:appendices" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="weatherRequestBaseV1">
+<xs:sequence>
+<xs:element name="url" type="xs:string" minOccurs="0" />
+<xs:element name="airport" type="tns:requestedAirportV1" minOccurs="0" />
+<xs:element name="codeType" type="tns:requestedString" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="requestedAirportV1">
+<xs:sequence>
+<xs:element name="requestedCode" type="xs:string" minOccurs="0" />
+<xs:element name="fsCode" type="xs:string" minOccurs="0" />
+<xs:element name="airport" type="tns:airportV1" minOccurs="0" />
+<xs:element name="error" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="airportV1">
+<xs:sequence>
+<xs:element name="fs" type="xs:string" />
+<xs:element name="iata" type="xs:string" minOccurs="0" />
+<xs:element name="icao" type="xs:string" minOccurs="0" />
+<xs:element name="faa" type="xs:string" minOccurs="0" />
+<xs:element name="name" type="xs:string" minOccurs="0" />
+<xs:element name="street1" type="xs:string" minOccurs="0" />
+<xs:element name="street2" type="xs:string" minOccurs="0" />
+<xs:element name="city" type="xs:string" />
+<xs:element name="cityCode" type="xs:string" minOccurs="0" />
+<xs:element name="stateCode" type="xs:string" minOccurs="0" />
+<xs:element name="postalCode" type="xs:string" minOccurs="0" />
+<xs:element name="countryCode" type="xs:string" />
+<xs:element name="countryName" type="xs:string" />
+<xs:element name="regionName" type="xs:string" />
+<xs:element name="timeZoneRegionName" type="xs:string" />
+<xs:element name="weatherZone" type="xs:string" minOccurs="0" />
+<xs:element name="localTime" type="xs:string" />
+<xs:element name="utcOffsetHours" type="xs:double" />
+<xs:element name="latitude" type="xs:double" />
+<xs:element name="longitude" type="xs:double" />
+<xs:element name="elevationFeet" type="xs:int" minOccurs="0" />
+<xs:element name="classification" type="xs:int" />
+<xs:element name="active" type="xs:boolean" />
+<xs:element name="dateFrom" type="xs:string" minOccurs="0" />
+<xs:element name="dateTo" type="xs:string" minOccurs="0" />
+<xs:element name="delayIndexUrl" type="xs:string" minOccurs="0" />
+<xs:element name="weatherUrl" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="requestedString">
+<xs:sequence>
+<xs:element name="requested" type="xs:string" minOccurs="0" />
+<xs:element name="interpreted" type="xs:string" minOccurs="0" />
+<xs:element name="error" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="tafV1">
+<xs:sequence>
+<xs:element name="report" type="xs:string" minOccurs="0" />
+<xs:element name="reportTime" type="xs:string" minOccurs="0" />
+<xs:element name="observationTime" type="xs:string" minOccurs="0" />
+<xs:element name="reportType" type="xs:string" minOccurs="0" />
+<xs:element name="weatherStationIcao" type="xs:string" minOccurs="0" />
+<xs:element name="forecasts" minOccurs="0">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="forecast" type="tns:forecastV1" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="forecastV1">
+<xs:sequence>
+<xs:element name="type" type="xs:string" minOccurs="0" />
+<xs:element name="start" type="xs:string" minOccurs="0" />
+<xs:element name="end" type="xs:string" minOccurs="0" />
+<xs:element name="conditions" type="tns:conditionsV1" minOccurs="0" />
+<xs:element name="probability" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="conditionsV1">
+<xs:sequence>
+<xs:element name="wind" type="tns:windV1" minOccurs="0" />
+<xs:element name="visibility" type="tns:visibilityV1" minOccurs="0" />
+<xs:element name="weatherConditions" minOccurs="0">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="weatherCondition" type="tns:weatherConditionV1" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="skyConditions" minOccurs="0">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="skyCondition" type="tns:skyConditionV1" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="pressureInchesHg" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="windV1">
+<xs:sequence>
+<xs:element name="direction" type="xs:int" minOccurs="0" />
+<xs:element name="directionMin" type="xs:int" minOccurs="0" />
+<xs:element name="directionMax" type="xs:int" minOccurs="0" />
+<xs:element name="directionIsVariable" type="xs:boolean" minOccurs="0" />
+<xs:element name="speedKnots" type="xs:string" minOccurs="0" />
+<xs:element name="gustSpeedKnots" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="visibilityV1">
+<xs:sequence>
+<xs:element name="miles" type="xs:string" minOccurs="0" />
+<xs:element name="lessThan" type="xs:boolean" minOccurs="0" />
+<xs:element name="cavok" type="xs:boolean" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="weatherConditionV1">
+<xs:sequence>
+<xs:element name="phenomenon" type="xs:string" minOccurs="0" />
+<xs:element name="descriptor" type="xs:string" minOccurs="0" />
+<xs:element name="intensity" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="skyConditionV1">
+<xs:sequence>
+<xs:element name="coverage" type="xs:string" minOccurs="0" />
+<xs:element name="base" type="xs:int" minOccurs="0" />
+<xs:element name="modifier" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="apiResponseError">
+<xs:sequence>
+<xs:element name="httpStatusCode" type="xs:int" />
+<xs:element name="errorCode" type="xs:string" minOccurs="0" />
+<xs:element name="errorId" type="xs:string" minOccurs="0" />
+<xs:element name="errorMessage" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="appendices">
+<xs:sequence>
+<xs:element name="airports" minOccurs="0">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="airport" type="tns:airportV1" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="APIException">
+<xs:sequence>
+<xs:element name="httpStatusCode" type="xs:int" />
+<xs:element name="errorCode" type="xs:string" minOccurs="0" />
+<xs:element name="errorId" type="xs:string" minOccurs="0" />
+<xs:element name="errorMessage" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="metar_for_airport">
+<xs:sequence>
+<xs:element name="appId" type="xs:string" />
+<xs:element name="appKey" type="xs:string" />
+<xs:element name="airport" type="xs:string" />
+<xs:element name="codeType" type="xs:string" minOccurs="0" />
+<xs:element name="extendedOptions" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="metar_for_airportResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:metarResponseV1" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="metarResponseV1">
+<xs:complexContent>
+<xs:extension base="tns:responseImpl">
+<xs:sequence>
+<xs:element name="request" type="tns:weatherRequestBaseV1" minOccurs="0" />
+<xs:element name="metar" type="tns:metarV1" minOccurs="0" />
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="metarV1">
+<xs:sequence>
+<xs:element name="report" type="xs:string" />
+<xs:element name="reportTime" type="xs:string" />
+<xs:element name="reportModifier" type="xs:string" minOccurs="0" />
+<xs:element name="weatherStationIcao" type="xs:string" />
+<xs:element name="tags" minOccurs="0">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="tag" type="tns:tagV1" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="conditions" type="tns:conditionsV1" minOccurs="0" />
+<xs:element name="temperatureCelsius" type="xs:string" minOccurs="0" />
+<xs:element name="dewPointCelsius" type="xs:string" minOccurs="0" />
+<xs:element name="runwayVisualRanges" minOccurs="0">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="runwayVisualRange" type="tns:runwayVisualRangeV1" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="obscurations" minOccurs="0">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="obscuration" type="tns:obscurationV1" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="noSignificantChange" type="xs:boolean" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="tagV1">
+<xs:sequence>
+<xs:element name="key" type="xs:string" minOccurs="0" />
+<xs:element name="value" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="runwayVisualRangeV1">
+<xs:sequence>
+<xs:element name="highestVisibility" type="xs:int" minOccurs="0" />
+<xs:element name="lowestVisibility" type="xs:int" minOccurs="0" />
+<xs:element name="modifier" type="xs:string" minOccurs="0" />
+<xs:element name="runwayNumber" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obscurationV1">
+<xs:sequence>
+<xs:element name="phenomenon" type="xs:string" minOccurs="0" />
+<xs:element name="coverage" type="xs:string" minOccurs="0" />
+<xs:element name="height" type="xs:int" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="zoneForecasts">
+<xs:sequence>
+<xs:element name="appId" type="xs:string" />
+<xs:element name="appKey" type="xs:string" />
+<xs:element name="airport" type="xs:string" />
+<xs:element name="codeType" type="xs:string" minOccurs="0" />
+<xs:element name="extendedOptions" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="zoneForecastsResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:zoneForecastResponseV1" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="zoneForecastResponseV1">
+<xs:complexContent>
+<xs:extension base="tns:responseImpl">
+<xs:sequence>
+<xs:element name="request" type="tns:weatherRequestBaseV1" minOccurs="0" />
+<xs:element name="zoneForecast" type="tns:zoneForecastV1" minOccurs="0" />
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="zoneForecastV1">
+<xs:sequence>
+<xs:element name="header" type="xs:string" minOccurs="0" />
+<xs:element name="general" type="xs:string" minOccurs="0" />
+<xs:element name="zones" minOccurs="0">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="zone" type="xs:string" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="reportTime" type="xs:string" minOccurs="0" />
+<xs:element name="cities" minOccurs="0">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="city" type="xs:string" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="zoneNames" minOccurs="0">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="zoneName" type="xs:string" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="dayForecasts" minOccurs="0">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="dayForecast" type="tns:dayForecastV1" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dayForecastV1">
+<xs:sequence>
+<xs:element name="day" type="xs:string" minOccurs="0" />
+<xs:element name="forecast" type="xs:string" minOccurs="0" />
+<xs:element name="start" type="xs:string" minOccurs="0" />
+<xs:element name="end" type="xs:string" minOccurs="0" />
+<xs:element name="tags" minOccurs="0">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="tag" type="tns:tagV1" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="all">
+<xs:sequence>
+<xs:element name="appId" type="xs:string" />
+<xs:element name="appKey" type="xs:string" />
+<xs:element name="airport" type="xs:string" />
+<xs:element name="codeType" type="xs:string" minOccurs="0" />
+<xs:element name="extendedOptions" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="allResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:allWeatherResponseV1" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="allWeatherResponseV1">
+<xs:complexContent>
+<xs:extension base="tns:responseImpl">
+<xs:sequence>
+<xs:element name="request" type="tns:weatherRequestBaseV1" minOccurs="0" />
+<xs:element name="metar" type="tns:metarV1" minOccurs="0" />
+<xs:element name="taf" type="tns:tafV1" minOccurs="0" />
+<xs:element name="zoneForecast" type="tns:zoneForecastV1" minOccurs="0" />
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:schema>
